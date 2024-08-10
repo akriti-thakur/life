@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+
 const ProDuct = () => {
     const [productlist, setProductlist] = useState([]);
   
@@ -26,7 +27,7 @@ const ProDuct = () => {
 //  },[]); // Empty dependency array ensures this effect runs only once (on mount)
   
     useEffect(()=>{
-      fetch("http://localhost:3000/products")
+      fetch("http://localhost:8000/products")
       .then((response)=>{
         if(!response.ok){
           return new Error()
@@ -47,7 +48,8 @@ const ProDuct = () => {
           
     },[])
   
-
+    
+  
 return(
 
     <>
@@ -55,7 +57,7 @@ return(
         <h2 className="text-center mb-4">Product</h2>
         <div className="row mb-3">
         <div className="col">
-            <Link className="btn btn-primary me-1" to="" role="button">Create Product</Link>
+            <Link className="btn btn-primary me-1"  role="button" to="/createproduct">Create Product</Link>
             <button type="button" className="btn active" data-bs-toggle="button" aria-pressed="true">Refresh</button>
 
         </div>
@@ -67,7 +69,7 @@ return(
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">NAME</th>
-                    <th scope="col">IMAGE</th>
+                    
                     <th scope="col">CATEGORY</th>
                     <th scope="col">PRICE</th>
                     <th scope="col">DISCRIPTION</th>
@@ -77,14 +79,14 @@ return(
             </thead>
             <tbody>
                 {productlist.map((product,index)=>{
-                   const{id,name,category,image,price,description}= product;
+                   const{id,name,category,price,description}= product;
 
                     return(
 
                         <tr key={index}>
                         <th scope="row">{id}</th>
                         <td>{name}</td>
-                        <td><img src={"http://localhost:3000/products"+product.image} alt="" /></td>
+                        
                         <td>{category}</td>
                         <td>{price}</td>
                         <td>{description}</td>
