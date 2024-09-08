@@ -14,13 +14,18 @@ const CreateProduct = () => {
 
     const formData = new FormData(event.target);
     
-    if (!formData.get('name') || !formData.get('price') || !formData.get('description') || !formData.get('category') || !file) {
+    if (!formData.get('name') || !formData.get('price') || !formData.get('description')) {
       alert("Please fill all the fields and select an image");
       return;
     }
 
+    // if (!formData.get('name') || !formData.get('price') || !formData.get('description') || !formData.get('category') || !file) {
+    //   alert("Please fill all the fields and select an image");
+    //   return;
+    // }
+
     // Append the file to formData
-    formData.append('image', file);
+    // formData.append('image', file);
 
     try {
       const response = await axios.post("http://localhost:8000/products", formData, {
@@ -65,10 +70,10 @@ const CreateProduct = () => {
               </select>
               <label htmlFor="category">CATEGORY</label>
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="image" className="form-label">Select Image</label>
               <input type="file" className="form-control" onChange={handleFileChange} name="image" id="image"/>
-            </div>
+            </div> */}
             <div className="row">
               <div className="offset-sm-4 col-sm-4 d-grid mb-4">
                 <button type="submit" className="btn btn-primary">SUBMIT</button>

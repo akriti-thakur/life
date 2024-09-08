@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 
 
 const ProDuct = () => {
-    const [productlist, setProductlist] = useState([]);
+    const [userlist, setUserlist] = useState([]);
   
 //     useEffect(() => {
 //       fetch("http://localhost:59871/db.json")
@@ -27,7 +27,7 @@ const ProDuct = () => {
 //  },[]); // Empty dependency array ensures this effect runs only once (on mount)
   
     useEffect(()=>{
-      fetch("http://localhost:8000/products")
+      fetch("http://localhost:8000/user")
       .then((response)=>{
         if(!response.ok){
           return new Error()
@@ -37,7 +37,7 @@ const ProDuct = () => {
         }
       })
       .then((data)=>{
-        setProductlist(data)
+        setUserlist(data)
       })
       .catch((error)=>{
         alert("unable to get the data")
@@ -48,18 +48,20 @@ const ProDuct = () => {
           
     },[])
   
+
+
     
   
 return(
 
     <>
     <div className="container my-4">
-        <h2 className="text-center mb-4">Product</h2>
+        <h2 className="text-center mb-4">USER</h2>
         <div className="row mb-3">
         <div className="col">
-            <Link className="btn btn-primary me-1"  role="button" to="/createproduct">Create Product</Link>
+            <Link className="btn btn-primary me-1"  role="button" to="/createproduct">Create users</Link>
             <button type="button" className="btn active" data-bs-toggle="button" aria-pressed="true">Refresh</button>
-
+``
         </div>
         </div>
     </div>
@@ -70,16 +72,19 @@ return(
                     <th scope="col">ID</th>
                     <th scope="col">NAME</th>
                     
-                    <th scope="col">CATEGORY</th>
-                    <th scope="col">PRICE</th>
-                    <th scope="col">DISCRIPTION</th>
+                    <th scope="col">USERNAME</th>
+                    <th scope="col">EMAIL</th>
+                    {/* <th scope="col">ADDRESS</th> */}
+                    <th scope="col">PHONE</th>
+                    <th scope="col">WEBSITE</th>
+                    {/* <th scope="col">COMAPNY</th> */}
 
 
                 </tr>
             </thead>
             <tbody>
-                {productlist.map((product,index)=>{
-                   const{id,name,category,price,description}= product;
+                {userlist.map((user,index)=>{
+                   const{id,name,username,email,address,phone,website,company}= user;
 
                     return(
 
@@ -87,9 +92,14 @@ return(
                         <th scope="row">{id}</th>
                         <td>{name}</td>
                         
-                        <td>{category}</td>
-                        <td>{price}</td>
-                        <td>{description}</td>
+                        <td>{username}</td>
+                        <td>{email}</td>
+                        {/* <td>{address}</td> */}
+                        <td>{phone}</td>
+                        <td>{website}</td>
+                        {/* <td>{company}</td> */}
+
+
                        
 
                         <td style={{whiteSpace:"nowrap",width:"10px"}}>

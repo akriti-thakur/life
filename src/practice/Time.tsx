@@ -16,7 +16,7 @@ const TodoApp=()=>{
       return () => {
         clearInterval(timerId); // Clean up the interval on unmount
       };
-    }); // Empty dependency array to run the effect once
+    },[]); // Empty dependency array to run the effect once
   
     const formattedTime = time.toLocaleTimeString('en-IN', {
       day:'numeric',
