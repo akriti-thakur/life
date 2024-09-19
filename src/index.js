@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'popper.js';
-// import App from "./App.tsx"
-import App from './smallpp/App.tsx';
+import App from "./App.tsx"
+// import App from './smallpp/App.tsx';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

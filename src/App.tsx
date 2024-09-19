@@ -1,4 +1,6 @@
 import React from "react";
+import Click from "./practice/First.tsx";
+
 
 // function Profile(date) {
 //   return new Intl.DateTimeFormat("en-US", {
@@ -17,9 +19,10 @@ import React from "react";
 //   );
 // }
 
-
-
-
-
-export default App;
-
+export default function App (){
+    return(
+        <>
+    <Click></Click>
+        </>
+    )
+}
